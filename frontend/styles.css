@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    width: 100%;
+    padding: 20px 0; /* Adjust padding for more space */
+    background: linear-gradient(90deg, #4CAF50, #3e8e41); /* Gradient background */
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    border-bottom: 2px solid #388e3c; /* Add a bottom border for definition */
+    position: fixed; /* Fix the header to the top */
+    top: 0;
+    z-index: 1000; /* Ensure the header is above other content */
+}
+
+main {
+    text-align: center;
+    margin-top: 100px; /* Space below the fixed header */
+}
+
+h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 2.5em; /* Increase font size */
+    font-weight: bold; /* Make the font bold */
+}
+
+.blurb {
+    margin: 20px 0;
+    font-size: 18px;
+    max-width: 800px; /* Limit width for better readability */
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+    background-color: #45a049;
+}
