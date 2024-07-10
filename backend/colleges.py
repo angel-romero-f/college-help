@@ -32,7 +32,15 @@ def get_college_info(WE_CAN_PASS_IN_PARAMS_HERE):
 # this df will be used in the main.py file
 # the "f" is a placeholder for now
 ret = dict(get_college_info("f").json())
+
+# initialize data of lists.
+nams = {'Name': ['Tom', 'nick', 'krish', 'jack'],
+        'Age': [20, 21, 19, 18]}
+
+# Create DataFrame
+ret = pd.DataFrame(nams)
 college_info_db = pd.DataFrame.from_dict(ret)
+#print(college_info_db)
 
 
 

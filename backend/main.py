@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for
-from colleges.py import college_info_db
+from colleges import college_info_db
 
 app = Flask(__name__)
 
