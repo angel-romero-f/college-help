@@ -6,13 +6,13 @@ body {
     justify-content: flex-start;
     height: 100vh;
     margin: 0;
-    background-color: #e3f2fd; /* Light blue background */
+    background-color: #e3f2fd; 
 }
 
 header {
     width: 100%;
     padding: 20px 0;
-    background: linear-gradient(90deg, #42a5f5, #1e88e5); /* Gradient background */
+    background: linear-gradient(90deg, #42a5f5, #1e88e5);
     text-align: center;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

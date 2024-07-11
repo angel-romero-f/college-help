@@ -11,12 +11,12 @@ body {
 
 header {
     width: 100%;
-    padding: 20px 0; /* Adjust padding for more space */
-    background: linear-gradient(90deg, #4CAF50, #3e8e41); /* Gradient background */
+    padding: 20px 0;
+    background: linear-gradient(90deg, #4CAF50, #3e8e41);
     text-align: center;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    border-bottom: 2px solid #388e3c; /* Add a bottom border for definition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #388e3c; 
     position: fixed; /* Fix the header to the top */
     top: 0;
     z-index: 1000; /* Ensure the header is above other content */
