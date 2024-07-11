@@ -10,15 +10,15 @@ for index, row in college_info_db.iterrows():
     rows.append(row)
     # note, you can access a value from a row using row["column"]
 
-app.route('/')
+@app.route('/')
 def home():
-    return 'Hello, World!'
+    return "<p>Hello, World!</p>" 
 
-app.route('/display_college_info')
+@app.route('/display_college_info')
 def display():
     return render_template('display_college_info.html', cols=cols, rows=rows)
 
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host="0.0.0.0")
