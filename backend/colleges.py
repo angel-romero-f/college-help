@@ -49,6 +49,8 @@ engine = db.create_engine('sqlite:///locations.db')
 
 df.to_sql('colleges', con=engine, if_exists='append', index=False)
 
+df.rename(columns={'latest.school.name':'Name', 'latest.school.city':'City', 'latest.school.state':'State', 'latest.student.size':'Size', 'latest.cost.tuition.in_state':'Tuition'}, inplace=True)
+
 with engine.connect() as connection:
     query_result = connection.execute(db.text("SELECT * FROM colleges;")).fetchall()
     print(pd.DataFrame(query_result))
