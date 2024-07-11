@@ -11,12 +11,19 @@
         <h1>CollegeRadar</h1>
     </header>
     <main>
+        <a href="index.html" class="button">Home</a>
+        <a href="match.html" class="button">Get Matched</a>
         <h2>Learn More About Colleges</h2>
         <p class="blurb">Explore detailed information about different colleges to help you make an informed decision.</p>
 
         <div class="nav-buttons">
-            <a href="index.html" class="button">Home</a>
-            <a href="match.html" class="button">Get Matched</a>
+
+        <!-- Input bar for user to enter a college name -->
+        <div class="input-bar">
+            <input type="text" id="collegeName" placeholder="Enter college name">
+            <button onclick="searchCollege()">Search</button>
+        </div>
+
         </div>
     </main>
 </body>
