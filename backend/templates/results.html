@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegeRadar - Match Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='match.css') }}">
+</head>
+<body>
+    <header>
+        <h1>CollegeRadar - Match Results</h1>
+    </header>
+    <main>
+        <h2>Here are your college matches</h2>
+        <ul>
+            {% for college in colleges['results'] %}
+                <li>{{ college['school.name'] }} - {{ college['school.city'] }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('match') }}" class="button">Back</a>
+    </main>
+</body>
+</html>

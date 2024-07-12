@@ -20,7 +20,11 @@ def get_college_info(college_name):
     }
 
     list_of_schools = requests.get(URL, params=params).json()['results']
-    return pd.DataFrame(list_of_schools).fillna('N/A')
+    df = pd.DataFrame(list_of_schools).fillna('N/A')
+    
+    df.rename(columns={'latest.school.name':'Name', 'latest.school.city':'City', 'latest.school.state':'State', 'latest.student.size':'Size', 'latest.cost.tuition.in_state':'Tuition'}, inplace=True)
+
+    return df
 
 
 # def save_to_json(data, filename):

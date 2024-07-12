@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, url_for, flash, redi
 import forms# import RegistrationForm
 from flask_behind_proxy import FlaskBehindProxy
 from colleges import get_college_info
+import requests
 
 
 app = Flask(__name__)
@@ -31,12 +32,6 @@ def search_college():
     
     return render_template('info.html', title='Register', form=form)
 
-@app.route('/match', methods=['GET', 'POST'])
-def match():
-    ## FILL IN HERE ##
-    return render_template('match.html', title='Register', form=form)
-    
-
 
 
 @app.route('/display_college_info')
@@ -54,6 +49,43 @@ def display_college_info():
     
     return render_template('display_college_info.html', cols=cols, rows=rows)
 
+@app.route('/match', methods=['GET', 'POST'])
+def match():
+    if request.method == 'POST':
+        population = request.form.get('population')
+        department = request.form.get('department')
+        environment = request.form.get('environment')
+
+        api_key = '9cx6Llu0TXhNipn0XjML7TTictmFY8eKAJtmn2aQ'
+        url = 'https://api.data.gov/ed/collegescorecard/v1/schools'
+        
+        # Mapping user input to API filters
+        population_size_map = {
+            'small': '0..2000',
+            'medium': '2001..15000',
+            'large': '15001..'
+        }
+        
+        environment_map = {
+            'city': '11,12,13',  # Locale codes for city
+            'rural': '41,42,43', # Locale codes for rural
+            'suburban': '21,22,23' # Locale codes for suburban
+        }
+    
+
+        params = {
+            'api_key': api_key,
+            'fields': 'school.name,school.city,latest.student.size,latest.academics.program_percentage,latest.cost.attendance.academic_year',
+            'latest.student.size__range': population_size_map.get(population),
+            'school.locale': environment_map.get(environment),
+        }
+
+        response = requests.get(url, params=params)
+        colleges = response.json()
+        print(colleges)
+
+        return render_template('results.html', colleges=colleges)
+    return render_template('match.html')
 
 
 
