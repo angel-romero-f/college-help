@@ -8,16 +8,19 @@
 </head>
 <body>
     <header>
-        <h1>CollegeRadar - Match Results</h1>
+        <h1>CollegeRadar</h1>
     </header>
     <main>
         <h2>Here are your college matches</h2>
-        <ul>
+        <ul class="results-list">
             {% for college in colleges['results'] %}
-                <li>{{ college['school.name'] }} - {{ college['school.city'] }}</li>
+                <li>
+                    <h3>{{ college['school.name'] }}</h3>
+                    <p>{{ college['school.city'] }}</p>
+                </li>
             {% endfor %}
         </ul>
-        <a href="{{ url_for('match') }}" class="button">Back</a>
+        <a href="{{ url_for('match') }}" class="back-button">Back</a>
     </main>
 </body>
 </html>

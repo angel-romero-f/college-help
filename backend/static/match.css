@@ -22,9 +22,15 @@ header {
     z-index: 1000;
 }
 
+.nav-buttons {
+    margin-top: 120px;
+    display: flex;
+    gap: 10px;
+}
+
 main {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 h1 {
@@ -74,13 +80,8 @@ button:hover {
     background-color: #1e88e5;
 }
 
-.nav-buttons {
-    margin-top: 30px;
-}
-
 .button {
     display: inline-block;
-    margin: 10px;
     padding: 10px 17px;
     font-size: 18px;
     color: white;
@@ -93,5 +94,50 @@ button:hover {
 }
 
 .button:hover {
+    background-color: #1e88e5;
+}
+
+.results-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    max-width: 800px;
+    width: 100%;
+}
+
+.results-list li {
+    background-color: white;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.results-list li h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #1e88e5;
+}
+
+.results-list li p {
+    margin: 0;
+    font-size: 1em;
+    color: #666;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    color: white;
+    background-color: #42a5f5;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
     background-color: #1e88e5;
 }
