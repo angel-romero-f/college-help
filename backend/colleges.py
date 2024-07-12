@@ -16,33 +16,38 @@ def get_college_info(college_name):
     params = {
     'api_key':"9cx6Llu0TXhNipn0XjML7TTictmFY8eKAJtmn2aQ",
     'school.name': college_name,
+    'fields': 'latest.school.name,latest.school.city,latest.school.state,latest.student.size,latest.cost.tuition.in_state'
     }
 
-    ret = requests.get(URL, params=params)
-    def save_to_json(data, filename):
-        with open(filename, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
+    list_of_schools = requests.get(URL, params=params).json()['results']
+    return pd.DataFrame(list_of_schools).fillna('N/A')
 
-    ret = get_college_info("f").json()
 
-    save_to_json(ret, 'college_info.json')
-            
-    df = pd.json_normalize(ret['results'])
+# def save_to_json(data, filename):
+#     with open(filename, 'w') as json_file:
+#         json.dump(data, json_file, indent=4)
 
-    df = df[['latest.school.name', 'latest.school.city', 'latest.school.state', 'latest.student.size', 'latest.cost.tuition.in_state']]
+# ret = get_college_info("harvard").json()
 
-    engine = db.create_engine('sqlite:///locations.db')
-
-    df.to_sql('colleges', con=engine, if_exists='append', index=False)
-
-    df.rename(columns={'latest.school.name':'Name', 'latest.school.city':'City', 'latest.school.state':'State', 'latest.student.size':'Size', 'latest.cost.tuition.in_state':'Tuition'}, inplace=True)
-
-    query_result = ""
-    with engine.connect() as connection:
-        query_result = connection.execute(db.text("SELECT * FROM colleges WHERE Name = college_name;")).fetchall()
-        print(pd.DataFrame(query_result))
+# save_to_json(ret, 'college_info.json')
         
-    result = [dict(row) for row in query_result]
-    return result
+# df = pd.json_normalize(ret['results'])
+
+# df = df[['latest.school.name', 'latest.school.city', 'latest.school.state', 'latest.student.size', 'latest.cost.tuition.in_state']]
+
+# engine = db.create_engine('sqlite:///locations.db')
+
+# df.to_sql('colleges', con=engine, if_exists='append', index=False)
+
+# df.rename(columns={'latest.school.name':'Name', 'latest.school.city':'City', 'latest.school.state':'State', 'latest.student.size':'Size', 'latest.cost.tuition.in_state':'Tuition'}, inplace=True)
+
+# query_result = ""
+# with engine.connect() as connection:
+#     query_result = connection.execute(db.text("SELECT * FROM colleges WHERE Name = college_name;")).fetchall()
+#     print(pd.DataFrame(query_result))
+    
+# result = [dict(row) for row in query_result]
+
+# print(result)
 
 
