@@ -20,11 +20,31 @@
 
         <!-- Input bar for user to enter a college name -->
         <div class="input-bar">
-            <input type="text" id="collegeName" placeholder="Enter college name">
-            <button onclick="searchCollege()">Search</button>
+            <form id="collegeForm">
+                <input type="text" id="collegeName" name="collegeName" placeholder="Enter college name">
+                <button type="submit">Search</button>
+            </form>
         </div>
 
         </div>
     </main>
+
+    <script>
+        document.getElementById('collegeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const collegeName = document.getElementById('collegeName').value;
+
+            fetch('http://127.0.0.1:5000/search_college', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ collegeName: collegeName })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
