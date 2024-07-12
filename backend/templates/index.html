@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegeRadar</title>
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <header>
+        <h1>CollegeRadar</h1>
+    </header>
+    <main>
+        <h2>Simplifying Your College Application Journey</h2>
+        <p class="blurb">Welcome to CollegeRadar, your one-stop solution for navigating the college application process. We help you find the perfect college match and provide detailed information on schools to make informed decisions.</p>
+        <a href="{{ url_for('match') }}" class="button">Get Matched</a>
+        <a href="{{ url_for('search_college') }}" class="button">Learn More</a>
+    </main>
+</body>
+</html>
